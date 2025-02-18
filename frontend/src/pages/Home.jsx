@@ -7,7 +7,12 @@ import Product from "./Products/Product";
 
 const Home = () => {
   const { keyword } = useParams();
-  const { data, isLoading, isError } = useGetProductsQuery({ keyword });
+  const { data, isLoading, isError, error } = useGetProductsQuery({ keyword });
+
+  // Log the error to inspect its structure
+  if (isError) {
+    console.log(error);
+  }
 
   return (
     <>
@@ -19,28 +24,28 @@ const Home = () => {
         <Loader />
       ) : isError ? (
         <Message variant="danger">
-          {isError?.data.message || isError.error}
+          {/* Check the error structure and display the message accordingly */}
+          {error?.data?.message || error?.message || "An unknown error occurred."}
         </Message>
       ) : (
         <>
-
           {/* Main Content */}
           <div className=" ml-[7rem] flex flex-col lg:flex-row justify-between items-center mb-8">
-                <h1 className="text-4xl mr-[10rem] font-bold text-gray-800 mb-4 lg:mb-0">
-                  Special Products
-                </h1>
-                <Link
-                  to="/shop"
-                  className="bg-pink-600 text-black font-bold mr-[5rem] rounded-full py-3 px-8 hover:bg-pink-800 transition-transform transform hover:scale-105"
-                >
-                  Shop Now
-                </Link>
-              </div>
+            <h1 className="text-4xl mr-[10rem] font-bold text-gray-800 mb-4 lg:mb-0">
+              Special Products
+            </h1>
+            <Link
+              to="/shop"
+              className="bg-pink-600 text-black font-bold mr-[5rem] rounded-full py-3 px-8 hover:bg-pink-800 transition-transform transform hover:scale-105"
+            >
+              Shop Now
+            </Link>
+          </div>
 
-            {/* Products Grid */}
-            <div>
+          {/* Products Grid */}
+          <div>
             <div className="ml-[3rem] grid grid-cols-3 mt-[2rem]">
-              {data.products.map((product) => (
+              {data?.products?.map((product) => (
                 <div key={product._id}>
                   <Product product={product} />
                 </div>
