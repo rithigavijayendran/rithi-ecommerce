@@ -98,5 +98,5 @@ This project is a fully functional e-commerce platform designed to provide a sea
 - 🛒 Multi-vendor marketplace support
 
 ## 📞 Contact
-For any inquiries, feel free to reach out at [your-email@example.com](mailto:rithiga.v2022cse@sece.ac.in).
+For any inquiries, feel free to reach out at [rithiga.v2022cse@sece.ac.in](mailto:rithiga.v2022cse@sece.ac.in).
 
